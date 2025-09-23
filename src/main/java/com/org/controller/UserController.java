@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("api/user/")
-@CrossOrigin(origins = "http://localhost:3000")
+
 public class UserController {
 
 	Logger LOG = LoggerFactory.getLogger(UserController.class);

@@ -33,7 +33,7 @@ import com.org.utility.Constants.ResponseCode;
 
 @RestController
 @RequestMapping("api/facility/")
-@CrossOrigin(origins = "http://localhost:3000")
+
 public class FacilityController {
 	Logger LOG = LoggerFactory.getLogger(FacilityController.class);
 

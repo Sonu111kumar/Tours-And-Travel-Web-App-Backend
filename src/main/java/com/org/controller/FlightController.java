@@ -14,7 +14,7 @@ import com.org.exceptions.RecordNotFoundException;
 import com.org.model.Flight;
 import com.org.service.FlightService;
 import com.org.service.FlightServiceImpl;
-@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 @RequestMapping("/flight")
 public class FlightController {
