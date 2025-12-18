@@ -1,7 +1,10 @@
 package com.org.service;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import com.org.Enum.Role;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +20,32 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
+
     public User registerUser(User user) {
         User registeredUser = null;
         if(user != null) {
-            user.setRole("USER");
+            user.setRole(Role.USER.toString());
+            user.setCreatedAt(LocalDateTime.now());
+            user.setUpdatedAt(LocalDateTime.now());
             registeredUser = this.userDao.save(user);
         }
 
         return registeredUser;
     }
-     @PostConstruct
-    public void createAdminAccount(){
-         User adminAccount = userDao.findByRole("ADMIN");
-         if(adminAccount == null){
-             User newAdminAccount = new User();
-             newAdminAccount.setFirstName("Admin");
-             newAdminAccount.setLastName("Admin");
-             newAdminAccount.setRole("ADMIN");
-             newAdminAccount.setEmailId("admin@gmail.com");
-             newAdminAccount.setPassword(new BCryptPasswordEncoder().encode("admin"));
-             userDao.save(newAdminAccount);
-             System.out.println("Admin created successfully");
-         }
-    }
+//     @PostConstruct
+//    public void createAdminAccount(){
+//         User adminAccount = userDao.findByRole("ADMIN");
+//         if(adminAccount == null){
+//             User newAdminAccount = new User();
+//             newAdminAccount.setFirstName("Admin");
+//             newAdminAccount.setLastName("Admin");
+//             newAdminAccount.setRole("ADMIN");
+//             newAdminAccount.setEmailId("admin@gmail.com");
+//             newAdminAccount.setPassword(new BCryptPasswordEncoder().encode("admin"));
+//             userDao.save(newAdminAccount);
+//             System.out.println("Admin created successfully");
+//         }
+//    }
 
     public User getUserByEmailIdAndPassword(String emailId, String password) {
         return this.userDao.findByEmailIdAndPassword(emailId, password);
@@ -67,5 +73,10 @@ public class UserService {
 
     public User updateUser(User user) {
         return this.userDao.save(user);
+    }
+
+    public void updateLoginTime(User user){
+        user.setLastLogin(LocalDateTime.now());
+        userDao.save(user);
     }
 }

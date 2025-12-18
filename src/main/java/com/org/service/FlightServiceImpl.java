@@ -1,10 +1,14 @@
 package com.org.service;
 
+import com.org.dao.AirportDao;
+import com.org.dto.FlightDto;
 import com.org.exceptions.*;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
+import com.org.model.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,18 +23,40 @@ public class FlightServiceImpl implements FlightService {
 	@Autowired
 	FlightDao flightDao;
 
+	@Autowired
+	AirportDao airportDao;
 	/*
 	 * add a flight
 	 */
 	@Override
-	public ResponseEntity<Flight> addFlight(Flight flight) {
-		Optional<Flight> findById = flightDao.findById(flight.getFlightId());
+	public ResponseEntity<Flight> addFlight(FlightDto flightDto) {
+		Optional<Flight> findById = flightDao.findById(flightDto.getFlightId());
+		Optional<Airport> departureAirport = airportDao.findByairportName(flightDto.getDepartureAirport());
+		Optional<Airport> arrivalAirport = airportDao.findByairportName(flightDto.getArrivalAirport());
 		try {
-		if (!findById.isPresent()) {
+		if (!findById.isPresent() && departureAirport.isPresent() && arrivalAirport.isPresent()) {
+			Flight flight = new Flight();
+			flight.setFlightId(flightDto.getFlightId());
+			flight.setFlightName(flightDto.getFlightName());
+			flight.setFlightModel(flightDto.getFlightModel());
+			flight.setFlightType(flightDto.getFlightType());
+			flight.setEconomyCapacity(flightDto.getEconomyCapacity());
+			flight.setBusinessCapacity(flightDto.getBusinessCapacity());
+			flight.setFirstCapacity(flightDto.getFirstCapacity());
+			flight.setEconomyPremiumCapacity(flightDto.getEconomyPremiumCapacity());
+			flight.setEconomyPrice(flightDto.getEconomyPrice());
+			flight.setBusinessPrice(flightDto.getBusinessPrice());
+			flight.setFirstPrice(flightDto.getFirstPrice());
+			flight.setEconomyPremiumPrice(flightDto.getEconomyPremiumPrice());
+			flight.setDepartureAirport(departureAirport.get());
+			flight.setArrivalAirport(arrivalAirport.get());
+			flight.setArrivalDatetime(flightDto.getArrivalDatetime());
+			flight.setDepartureDatetime(flightDto.getDepartureDatetime());
+
 			flightDao.save(flight);
 			return new ResponseEntity<Flight>(flight,HttpStatus.OK);
 		} else
-			throw new RecordAlreadyPresentException("Flight with number: " + flight.getFlightId() + " already present");
+			throw new RecordAlreadyPresentException("Flight with number: " + flightDto.getFlightId() + " already present");
 	}
 		catch(RecordAlreadyPresentException e)
 		{

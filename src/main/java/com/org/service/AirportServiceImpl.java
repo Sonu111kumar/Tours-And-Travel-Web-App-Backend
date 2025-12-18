@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.org.model.Airport;
 import com.org.model.Flight;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +72,19 @@ public class AirportServiceImpl implements AirportService {
 			return new ResponseEntity<Airport>(airport,HttpStatus.NOT_FOUND);
 		}
 	}
+//	@PostConstruct
+//	public void addDefaultAirport(){
+//      Airport airport1 = new Airport();
+//	  airport1.setAirportName("Indira Gandhi International");
+//	  airport1.setAirportLocation("New Delhi");
+//
+//	  Airport airport2 = new Airport();
+//	  airport2.setAirportName("Chhatrapati Shivaji Intl");
+//	  airport2.setAirportLocation("Mumbai");
+//	  airportDao.save(airport1);
+//	  airportDao.save(airport2);
+//	  System.out.println("Default Airport Added successfully");
+//	}
 
 	/*
 	 * modify an Airport

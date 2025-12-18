@@ -37,7 +37,27 @@
 			<version>21.9.0.0</version> <!-- Use the latest stable version -->
 		</dependency>
 
-<!--		<dependency>-->
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.34.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client-jackson2</artifactId>
+			<version>1.45.0</version>
+		</dependency>
+
+
+
+		<!--		<dependency>-->
 <!--			<groupId>com.mysql</groupId>-->
 <!--			<artifactId>mysql-connector-j</artifactId>-->
 <!--			<scope>runtime</scope>-->

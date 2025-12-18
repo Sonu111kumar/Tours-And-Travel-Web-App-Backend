@@ -71,7 +71,10 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/swagger-ui.html").permitAll()
                         .requestMatchers("/api/user/login").permitAll()
+                        .requestMatchers("/api/user/Googlelogin").permitAll()
+                        .requestMatchers("/api/user/Googleregister").permitAll()
                         .requestMatchers("/api/user/register").permitAll()
+                        .requestMatchers("api/user/id").permitAll()
                         .requestMatchers("/api/location/fetch").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // For CORS preflight
 
@@ -81,6 +84,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/facility/add").hasRole("admin")
                         .requestMatchers("/api/facility/hotel/add").hasRole("admin")
                         .requestMatchers("/api/book/hotel/update/status").hasRole("admin")
+                        .requestMatchers("api/flight/**").permitAll()
 
                         // --- Any other request ---
                         .anyRequest().authenticated()

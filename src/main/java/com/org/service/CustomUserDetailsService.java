@@ -20,20 +20,3 @@ public class CustomUserDetailsService implements UserDetailsService{
         return org.springframework.security.core.userdetails.User.withUsername(user.getEmailId()).password(user.getPassword()).authorities(user.getRole()).build();
     }
 }
-
-/*@Service
-public class CustomUserDetailsService implements UserDetailsService {
-	
-    @Autowired
-    private UserServiceImpl userService;
-
-    @Override
-    public UserDetails loadUserByUsername(String emailId) throws UsernameNotFoundException {
-    	
-    	Users user = this.userService.getUserByEmailId(emailId);
-    	
-        return org.springframework.security.core.userdetails.User.withUsername(user.getUserEmail()).password(user.getUserPassword()).authorities(user.getRoles()).build();
-        
-    }
-    	
-}*/

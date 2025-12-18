@@ -4,12 +4,13 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.org.dto.FlightDto;
 import org.springframework.http.ResponseEntity;
 
 import com.org.model.Flight;
 
 public interface FlightService {
-	public ResponseEntity<?> addFlight(Flight flight);
+	public ResponseEntity<?> addFlight(FlightDto flightDto);
 
 	public Iterable<Flight> viewAllFlight();
 

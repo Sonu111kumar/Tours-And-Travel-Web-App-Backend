@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.org.dto.FlightDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +17,17 @@ import com.org.service.FlightService;
 import com.org.service.FlightServiceImpl;
 
 @RestController
-@RequestMapping("/flight")
+@RequestMapping("api/flight")
 public class FlightController {
 	@Autowired(required = true)
 	FlightService flightService;
 
 	@PostMapping("/addFlight")
 	@ExceptionHandler(RecordAlreadyPresentException.class)
-	public void addFlight(@RequestBody Flight flight) {
-		flightService.addFlight(flight);
+	public ResponseEntity<?> addFlight(@RequestBody FlightDto flightDto) {
+		return flightService.addFlight(flightDto);
 		//admin
+
 	}
 
 	@GetMapping("/allFlight")

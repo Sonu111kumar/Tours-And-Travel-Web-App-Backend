@@ -36,47 +36,47 @@ public class LocationService implements CommandLineRunner {
 
      @Override
 	public void run(String... args) throws  Exception{
-		if (locationDao.count() == 0) {
-			List<Hotel> delhiHotels = Arrays.asList(
-					createHotel("Taj Palace", "Luxury 5-star hotel in the heart of Delhi.",
-							"Chanakyapuri", "110021", "tajdelhi@example.com",
-							8000.0, 150, 101),
-
-					createHotel("Budget Inn Delhi", "Affordable stay for students & solo travelers.",
-							"Karol Bagh", "110005", "budgetinn@example.com",
-							2000.0, 50, 104)
-
-			);
-		List<Hotel> mumbaiHotels = 	Arrays.asList(createHotel("Oberoi Mumbai", "Premium seafront hotel with luxury amenities.",
-					"Nariman Point", "400021", "oberoi.mumbai@example.com",
-					10000.0, 200, 102));
-
-			List<Hotel> goaHotels = Arrays.asList(createHotel("Leela Goa", "Beachside resort with stunning views.",
-							"Mobor Beach", "403731", "leela.goa@example.com",
-							7000.0, 120, 103));
-
-
-
-
-
-
-
-					locationDao.save(addLocation(0, "Delhi", "Capital of India, known for its heritage and modernity.", delhiHotels));
-			locationDao.save(addLocation(0, "Mumbai", "Financial capital of India and home of Bollywood.", mumbaiHotels));
-			locationDao.save(addLocation(0, "Goa", "Famous for beaches and tourism.", goaHotels));
-			locationDao.save(addLocation(0, "Bangalore", "IT hub of India, known as Silicon Valley of India.", null));
-			locationDao.save(addLocation(0, "Chennai", "Known for temples and Marina Beach.", null));
-			locationDao.save(addLocation(0, "Hyderabad", "City of pearls, famous for biryani.", null));
-			locationDao.save(addLocation(0, "Pune", "Educational hub with pleasant weather.", null));
-			locationDao.save(addLocation(0, "Kolkata", "Cultural capital of India.", null));
-			locationDao.save(addLocation(0, "Jaipur", "Pink City, famous for forts and palaces.", null));
-			locationDao.save(addLocation(0, "Ahmedabad", "Known for Sabarmati Ashram and textiles.", null));
-
-
-
-
-			System.out.println("✅ Default Locations and Hotels added to DB");
-		}
+//		if (locationDao.count() == 0) {
+//			List<Hotel> delhiHotels = Arrays.asList(
+//					createHotel("Taj Palace", "Luxury 5-star hotel in the heart of Delhi.",
+//							"Chanakyapuri", "110021", "tajdelhi@example.com",
+//							8000.0, 150, 101),
+//
+//					createHotel("Budget Inn Delhi", "Affordable stay for students & solo travelers.",
+//							"Karol Bagh", "110005", "budgetinn@example.com",
+//							2000.0, 50, 104)
+//
+//			);
+//		List<Hotel> mumbaiHotels = 	Arrays.asList(createHotel("Oberoi Mumbai", "Premium seafront hotel with luxury amenities.",
+//					"Nariman Point", "400021", "oberoi.mumbai@example.com",
+//					10000.0, 200, 102));
+//
+//			List<Hotel> goaHotels = Arrays.asList(createHotel("Leela Goa", "Beachside resort with stunning views.",
+//							"Mobor Beach", "403731", "leela.goa@example.com",
+//							7000.0, 120, 103));
+//
+//
+//
+//
+//
+//
+//
+//					locationDao.save(addLocation(0, "Delhi", "Capital of India, known for its heritage and modernity.", delhiHotels));
+//			locationDao.save(addLocation(0, "Mumbai", "Financial capital of India and home of Bollywood.", mumbaiHotels));
+//			locationDao.save(addLocation(0, "Goa", "Famous for beaches and tourism.", goaHotels));
+//			locationDao.save(addLocation(0, "Bangalore", "IT hub of India, known as Silicon Valley of India.", null));
+//			locationDao.save(addLocation(0, "Chennai", "Known for temples and Marina Beach.", null));
+//			locationDao.save(addLocation(0, "Hyderabad", "City of pearls, famous for biryani.", null));
+//			locationDao.save(addLocation(0, "Pune", "Educational hub with pleasant weather.", null));
+//			locationDao.save(addLocation(0, "Kolkata", "Cultural capital of India.", null));
+//			locationDao.save(addLocation(0, "Jaipur", "Pink City, famous for forts and palaces.", null));
+//			locationDao.save(addLocation(0, "Ahmedabad", "Known for Sabarmati Ashram and textiles.", null));
+//
+//
+//
+//
+//			System.out.println("✅ Default Locations and Hotels added to DB");
+//		}
 	}
 
 	private Location addLocation(int id,String city,String description,List<Hotel> hotels){
